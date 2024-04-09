@@ -34,5 +34,67 @@
 
 ** após criar o contexto ir no appsetting.json e definir qual a string de conexao 
    com banco de dados que será usada para se comunicar com o db
+   la no appsetting vou criar "ConnectionString" la que sera definido a string de conexao com o banco
+   o SITE WWWW.CONNECTIONSTRINGS.COM PERMITE A CONSULTA A DIVERSAS STRINGS DE CONEXAO
+
+** ir na classe Program.cs e crio a mySqlConnection para concluir a string de conexao com o bd
+   e no services adicionando o contexto e o tipo de bd 
+   ATENTAR A SINTAXE
+
+** agora antes de criar as migrations vamos definir a relação entre Categoria e Produto
+   ou seja vamos criar uma coluna na tabela produtos que estará relacionada a Categoria
+   a famosa tabela FOREIGN KEY
+   De inicio vamos em Categoria.cs criar uma tabela relacional
+   E Depois vou em Produto criar a tabela relacional CategoriaId
+
+** Ápós podemos de fato fazer as migrations ja que esta tudo configurado
+   vamos usar o EF Core Migrations e o EF Core Tools
+   segue os comandos que vamos usar
+   
+   dotnet ef
+   
+   - Criar o script de migração
+     dotnet ef migrations add 'nome'
+  
+   - Remove o script de migração criado
+     dotnet ef migrations remove 'nome'
+
+   - Gera o banco de dados e as tabelas com base no script
+     dotnet ef database update
+
+    OBS lembrando que tem a opção de fazer essas migrations usando o Console do visual studio
+        (Package Manager Console) e instalar o Pacote Nuget Microsoft.EntityFrameworkCore.Tools
+
+     - Criar o script de migração
+       add-migration 'nome'
+  
+     - Remove o script de migração criado
+       remove-migration 'nome'
+
+     - Gera o banco de dados e as tabelas com base no script
+       update-database    
+
+** neste caso vamos criar as migrations por comandos mesmo
+   vá em Ferramentas>Linha de Comando>Prompt de Comando do Desenvolvedor
+   de um comando dir e depois entre neste caso vc esta na pasta da solução porem
+   vc precisa estar na pasta do projeto que neste caso será cd APICatalogo,
+   agora estando na pasta de certa segue o comando: dotnet ef migrations add MigracaoInicial
+   Depois de feito o comando será criado uma pasta chamada Migration com 2 arquivos
+
+   Deu certo agora vamos criar o arquivo de script voltando ao console
+   dotnet ef database update   
+   este comando vai gerar as tabelas as colunas com as definições estabelecidas
+   se vc for no mysql workbench e dar uma atualizada vc vai ver que ele criou o db
+   do jeito que foi estabelecido
+
+** depois de usar as migrations e fazer de fato o banco e as tabelas e linkar com a aplicação
+   chegou o momento de ajustar e configurar as tabelas seguindo o padrão desejado
+   pq elas vem em um padrão não muito otimizado
+   para fazer isto vamos usar os famosos Data Annotations
+   vamos inciar em Categoria
+
+
+
+
 
 */

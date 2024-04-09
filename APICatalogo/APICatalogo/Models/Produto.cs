@@ -10,4 +10,15 @@ public class Produto // classe anemica pq só foi definido propriedades
     public  string? ImageUrl { get; set; }
     public  float Estoque { get; set; }
     public  DateTime DataCadastro { get; set; }
+
+    
+    // tabela relacional que vai indicar o id da categoria do produto
+    // e esta tabela esta linkada(relacionada com a tabela Categoria)
+    public int CategoriaId { get; set; }
+
+
+    // criando uma propriedade de navegação aonde estou definindo
+    // que Produto está mapeado em Categoria ou seja cada produto
+    // terá uma Categoria(lembrando que Categoria tem o id nome e url da imagem)
+    public Categoria? Categoria { get; set; }
 }
