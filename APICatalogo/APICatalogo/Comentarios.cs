@@ -91,7 +91,65 @@
    chegou o momento de ajustar e configurar as tabelas seguindo o padrão desejado
    pq elas vem em um padrão não muito otimizado
    para fazer isto vamos usar os famosos Data Annotations
-   vamos inciar em Categoria
+   vamos inciar em Categoria e depois em Produto
+
+** Após fazer a adição dos Data Anotations e otimizar as tabelas
+   va para o Ferramentas>Linha de Comando>Prompt de Comando do Desenvolvedor
+   e de o comando para atualizar as migrations neste caso será
+   dotnet ef migrations add AjusteTabelas
+   este AjusteTabelas será o nome da nova migrations criada
+
+   depois de criada essa nova migrations(AjusteTabela)
+   agora temos que atualizar no banco de fato voltando no console digite
+   
+   dotnet ef database update
+   
+   assim com esse comando será atualizado de fato la no banco de dados 
+
+** Agora vamos popular as tabelas para poder testar vamos usar o conceito de "Popular tabela de dados"
+   no resumo tem varias abordagens para fazer isso no nosso caso vamos usar a abordagem
+   - Criar uma migração vazia usando o Migrations e usar os métodos Up() e Down()
+     definindo nestes métodos as instruções INSERT INTO para incluir dados nas tabelas
+    
+   ou seja o roteiro será
+   
+   1 - Criar uma nova migração usando Migrations
+       dotnet ef migrations add PopularesCategorias
+   2 - Definir os comandos SQL no método Up() para incluir dados
+       insert into categorias(Nome,ImageUrl) Values('Bebidas','bebidas.jpg')
+   3 - Definir os comandos SQL no método Down() para reverter a migração
+       delete from categorias
+   4 - Aplicar a migração
+       dotnet ef database update
+
+
+   seguindo a mesma ideia na tabela Produto
+
+   1 - Criar uma nova migração usando Migrations
+       dotnet ef migrations add PopularProdutos
+   2 - Definir os comandos SQL no método Up() para incluir dados
+       insert into produtos(Nome,Descricao,Preco,ImagemUrl,Estoque,DataCadastro,CategoriaId) 
+       Values('Suco de Laranja','Suco de Laranja 500ml, 7.45, 'sucolaranja.jpg',10,now(),1)
+   3 - Definir os comandos SQL no método Down() para reverter a migração
+       delete from produtos
+   4 - Aplicar a migração
+       dotnet ef database update
+
+
+** sabendo de tudo isso agora vamos dar os comandos
+   Ferramentas>Linha de Comando>Prompt de Comando do Desenvolvedor entra na pasta de projeto e 
+   digite o comando : dotnet ef migrations add PopularCategorias
+   assim sera criao do arquivo em migrations PopularCategorias
+   la faça a configuraçãod e inserção de dados e depois digite no console
+   dotnet ef database update 
+   para atualizar o banco de dados segundo a migration criada
+    
+   repetir o mesmo procedimento com adicionar dados na tabela Produto
+
+**
+ 
+  
+   
 
 
 

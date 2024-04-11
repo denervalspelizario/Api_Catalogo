@@ -1,7 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;         // chamando bblioteca data anotations
+using System.ComponentModel.DataAnnotations.Schema;  // chamando bblioteca data anotations
 
 namespace APICatalogo.Models;
 
+// 03 (DATA ANOTATIONS) mapeando essa entidade para a tabela Categorias la do banco de dados
+[Table("Categorias")]
 public class Categoria // classe anemica pq só foi definido propriedades
 {
     // 02 este construtor seria uma boa pratica 
@@ -13,9 +17,17 @@ public class Categoria // classe anemica pq só foi definido propriedades
     }
 
 
+
     // propriedades 01
+    [Key] // 03 (DATA ANOTATIONS)indicando com o Key que CategoriaId é uma chave primaria
     public int CategoriaId { get; set; } // indicando a chave primaria
-    public string? Nome { get; set; } 
+
+    [Required] // 03 (DATA ANOTATIONS)indicando que Nome é obrigatorio
+    [StringLength(80)]  // indicando que sera tipo string e o tamanho maximo será 80
+    public string? Nome { get; set; }
+
+    [Required] // 03 (DATA ANOTATIONS)indicando que ImagemUrl é obrigatorio
+    [StringLength(300)]  // indicando que sera tipo string e o tamanho maximo será 300
     public string? ImagemUrl { get; set; } 
 
     // 02 estou definindo que Categoria vai ter uma coleção de objeto Produto
