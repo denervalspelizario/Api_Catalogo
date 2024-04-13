@@ -146,7 +146,12 @@
     
    repetir o mesmo procedimento com adicionar dados na tabela Produto
 
-**
+** Agora depois é hora de ir para os Controllers da Api
+   existem varias maneira de criar controlers no asp.netcore
+   aqui vamos fazer assim
+   cliclar com botao direto na pasta Controllers > Adicionar > Controller > Controller Vazio
+   lembrando do lado esquerdo estar em API  clicar no ADD vai abrir uma aba para vc colocar
+   o nome e pronto Controller criado
  
   
    
