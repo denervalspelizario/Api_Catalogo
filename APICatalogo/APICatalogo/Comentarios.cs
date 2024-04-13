@@ -152,6 +152,11 @@
    cliclar com botao direto na pasta Controllers > Adicionar > Controller > Controller Vazio
    lembrando do lado esquerdo estar em API  clicar no ADD vai abrir uma aba para vc colocar
    o nome e pronto Controller criado
+
+   Esse processo sera o mesmo tanto no caso de ProdutosController e CategoriasController
+   Os comentarios explicando o passo a passo estao no ProdutosController  no CategoriasController
+   deixei o codigo mais limpo 
+   
  
   
    
