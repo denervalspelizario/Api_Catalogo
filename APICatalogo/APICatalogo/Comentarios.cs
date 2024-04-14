@@ -157,12 +157,25 @@
    Os comentarios explicando o passo a passo estao no ProdutosController  no CategoriasController
    deixei o codigo mais limpo 
    
+
+** O primeiro Get de Categoria que retorna todas as categorias e produtos esta com um problema de
+   de serialização para resolve-lo va em Progam.cs e mude o builder.Services.AddControllers()
  
   
-   
+** Após fazer o ajuste para evitar o erro de serializacao e desserializacao 
+   vamos otimizar nosso codigo   
 
+   Dica Nunca retorne todos os registros em uma consulta
+   exemplo: 
+   _context.Produtos.Take(10).Tolist(); - neste caso ele pega toda lista mas  até 10 itens
 
+   Dica Nunca retorne objetos relacionados sem aplicar um filtro
+   exemplo:
+   _context.Categorias.Include(p => p.Produtos).Where(c=>c.CategoriaId <= 5).ToList();
+   pegando todos as categorias e todos os produtos onde o Id de categoria for menor ou igual a 5
 
+** Agora que a gente ja fez algumas otimizacoes vamos  fazer tratamento de erros com 
+   o bloco try cacth
 
 
 */

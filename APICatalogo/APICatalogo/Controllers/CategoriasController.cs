@@ -53,6 +53,10 @@ namespace APICatalogo.Controllers
             // pegando todas as categorias via list
             var categorias = _context.Categorias.ToList();
 
+            // 02 se eu quiser fazer uma consulta mais otimizada eu poderia usar AsNoTracking
+            // porem ele só pode ser usado se eu não for alterar esses dados
+            // essa é uma forma de otimizar consultas get
+            var categoriasOtimizada = _context.Categorias.AsNoTracking().ToList();
 
             // tratando o erro caso categorias for null
             if (categorias is null)

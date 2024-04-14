@@ -1,11 +1,31 @@
 using APICatalogo.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+/* Resolvendo o problema de serializacao de categoria/produtos 
+ * (o primeiro get de CategoriaControllers) que retorna todos as categorias e produtos
+   foi mudado 
+   
+   builder.Services.AddControllers()
+
+   para
+   
+   builder.Services.AddControllers().AddJsonOptions( options => 
+   options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles
+  );    
+ */
+
+builder.Services.AddControllers().AddJsonOptions( options => 
+ options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles
+);
+
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

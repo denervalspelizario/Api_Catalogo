@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace APICatalogo.Models;
 
@@ -40,5 +41,7 @@ public class Produto // classe anemica pq só foi definido propriedades
     // criando uma propriedade de navegação aonde estou definindo
     // que Produto está mapeado em Categoria ou seja cada produto
     // terá uma Categoria(lembrando que Categoria tem o id nome e url da imagem)
+
+    [JsonIgnore] // 04 essa prorpiedade será ignorada na serializacao e desserializacao
     public Categoria? Categoria { get; set; }
 }
